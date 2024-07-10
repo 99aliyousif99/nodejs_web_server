@@ -1,7 +1,19 @@
 const path = require("path");
+const {logger} = require("./middleware/logEvents");
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(logger);
+
+app.use(cors());
+
+app.use(express.urlencoded({ extended: false }));
+
+app.use(express.json());
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
   //res.sendFile('./views/index.html', { root: __dirname });
