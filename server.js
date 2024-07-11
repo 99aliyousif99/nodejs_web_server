@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(logger);
 
+
 app.use(cors());
 
 app.use(express.urlencoded({ extended: false }));
